@@ -3,7 +3,7 @@ layout: post
 title: Using and Abusing UnderscoreJs
 ---
 
-[UnderscoreJs](http://www.underscorejs.org) is a utility-belt library for Javascript providing a set of functions well known from the world of functional programming. These utility functions allow software development in a stateless way, without side-effects.  Javascript objects have to be treated as *immutable data*, otherwise UnderscoreJs would lose its real purpose.
+UnderscoreJs is a utility-belt library for Javascript providing a set of functions well known from the world of functional programming. These utility functions allow software development in a stateless way, without side-effects.  Javascript objects have to be treated as *immutable data*, otherwise UnderscoreJs would lose its real purpose.
 
 > Immutable data cannot be changed. While in object oriented programming, the state of an object can be mutated by its methods, programs written in a functional style treat function parameters as value types that never change during the execution of a function. 
 
