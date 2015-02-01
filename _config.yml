@@ -18,12 +18,12 @@ avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/je
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble: 
-  email: 
+  email: info@zsoltnagy.eu
   facebook: 
   flickr: 
   github: zsolt-nagy
   instagram: 
-  linkedin: http://de.linkedin.com/pub/zsolt-nagy/64/665/7b4
+  linkedin: linkedin.com/pub/zsolt-nagy/64/665/7b4
   pinterest: 
   rss: # just type anything here for a working RSS icon, make sure you set the "url" above!
   twitter: #
@@ -37,7 +37,7 @@ google_analytics:
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url: 
+url:
 
 # If you're hosting your site at a Project repository on GitHub pages 
 # (http://yourusername.github.io/repository-name)
