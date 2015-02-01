@@ -199,10 +199,12 @@ _.isUndefined = function(obj) {
 Suppose a variable is not undefined, but undeclared. In this case, the `isUndefined` function does not return a boolean value, but throws a `ReferenceError` instead. This is very good for debugging, as long as we make sure these errors are caught. One might ask who would make such stupid mistakes in the code to check if an undeclared variable is undefined? Apparently, it does not have to be you or any client side developer. It can also happen that someone "refactors" the API your single page application is using, and under certain special circumstances, a key in a GET request becomes omitted. 
 
 I am not saying that these type checkers are wrong in general, they are just wrong in the wrong hands. Always use them defensively and never assume that you can get away with checking the type of a variable before checking if it is undeclared. In case you study the annotated source code, this should not be a concern for you. However, without proper knowledge, people often make assumptions. One assumption is that these type checkers work like the `typeof` operator in Javascript, which returns
+
 - `"undefined"` for an undeclared variable,
 - `"object"` for a variable having a value `null`.
 
 Know the functions you are using!
+
 - any Underscore type checker throws a reference error if its argument is not declared,
 - `_.isObject( null )` returns `false`.
 
@@ -234,6 +236,7 @@ I have been told multiple times that Underscore templating lacks the functionali
 > Whether you use a Model-View-Controller, Model-View-Presenter or a Model-View-ViewModel framework, this separation is not only possible, but also encouraged. 
 
 Normally, all you need in a template is 
+
 - a set of template variables based on your model state and prepared by your presenter, controller or view model
 - sequence of DOM elements
 - selection ( `if`-`else`)
@@ -245,6 +248,7 @@ Summary
 -------
 
 UnderscoreJs is very popular in the Javascript community. A utility belt library encouraging functional programming is a very good choice for writing elegant, descriptive, maintainable code when used with care. The following advice was given for writing solid code using Underscore:
+
 - Think twice when using `_.each` just to rely on its side-effects. Most often than not, there is another collection utility for the same purpose.
 - Tidy up your code by naming anonymous functions or use chaining to avoid building a pyramid-like code structure, also known as the Pyramid of Doom. 
 - Unless UnderscoreJs is not used for functional programming purposes, the functional notation results in more natural, functional style code than the Object Oriented notation. 
