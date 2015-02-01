@@ -4,12 +4,10 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
-
-### More Information
-
-A place to include any other types of information that you'd like to include about yourself. 
+I am [Zsolt Nagy](http://www.zsoltnagy.eu), a web development team lead, mentor and software engineer living in Berlin, Germany. This blog is about lessons learned while solving complex problems, experimenting with technology and teaching others in how to improve their skills.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[info@zsoltnagy.eu](mailto:info@zsoltnagy.eu)
+
+[http://www.zsoltnagy.eu](http://www.zsoltnagy.eu)
