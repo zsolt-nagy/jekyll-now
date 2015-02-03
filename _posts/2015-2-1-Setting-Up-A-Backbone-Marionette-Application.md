@@ -14,7 +14,7 @@ Create a folder for your test project. Our project will be placed in the `Marion
 
 Create a file called `package.json`. This file describes dependencies for your project. Copy-paste the following JSON object into the package.json file:
 
-```json
+{% highlight javascript %}
 {
     "name": "MarionetteTest",
     "version": "0.0.1",
@@ -37,7 +37,8 @@ Create a file called `package.json`. This file describes dependencies for your p
         "sinon-chai": "latest"
     }
 }
-```
+{% endhighlight %}
+
 All keys and values inside the package.json are obvious except the devDependencies. These dependencies are node packages that are to be installed by the Node Package Manager. All these dependencies can be placed in the following two groups:
 
 - tools for automated testing (Mocha, Chai, SinonJs),
