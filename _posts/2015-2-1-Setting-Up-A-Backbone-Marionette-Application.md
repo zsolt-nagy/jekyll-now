@@ -14,7 +14,7 @@ Create a folder for your test project. Our project will be placed in the `Marion
 
 Create a file called `package.json`. This file describes dependencies for your project. Copy-paste the following JSON object into the package.json file:
 
-{% highlight javascript %}
+{% highlight json %}
 {
     "name": "MarionetteTest",
     "version": "0.0.1",
