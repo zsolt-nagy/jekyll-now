@@ -15,8 +15,21 @@ blue      #268bd2  reserved keywords
 cyan      #2aa198  strings, numbers
 green     #859900  operators, other keywords
 */
+
+code 
+{
+  font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+}
  
-.highlight { background-color: #002b36; color: #93a1a1 }
+.highlight 
+{ 
+   background-color: #002b36; 
+   color: #93a1a1;
+   padding: 7px 7px 7px 10px;
+   border: 1px solid #ddd;
+   margin: 20px 0 20px 0;
+}
+
 .highlight .c { color: #586e75 } /* Comment */
 .highlight .err { color: #93a1a1 } /* Error */
 .highlight .g { color: #93a1a1 } /* Generic */
