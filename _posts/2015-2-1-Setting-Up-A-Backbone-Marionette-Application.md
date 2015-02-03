@@ -284,6 +284,7 @@ Done, without errors.
 ```
 
 The list of tasks that can be added to the Gruntfile is quite big. In addition, even if you don't find a task suitable for automating a process related to development, testing or deployment, you can also execute arbitrary commands. What kind of tasks and commands are suggested?
+
 - In most applications, SASS or LESS is used for writing maintainable CSS. Both `.sass` and `.less` can be compiled into `.css` that the browser can understand. The task responsible for converting `.sass` files into `.css` is `"grunt-contrib-compass"`
 - When developing, operating and maintaining large Backbone/Marionette applications, typically a lot of files are created. For performance reasons, it makes sense to concatenate and minify the code and deploy the application in a way that the browser loads only one Javascript file from the server. The task `"grunt-contrib-uglify"` is responsible for this process. As a side benefit, as the name suggests, your code will also become quite ugly, therefore the outside world will have a hard time understanding details and organizing principles of your code. For smooth debugging however, deploying source maps to at least the QA server is suggested.
 - Live reload: development is made easier if your browser is automatically reloaded whenever you change a file. 
