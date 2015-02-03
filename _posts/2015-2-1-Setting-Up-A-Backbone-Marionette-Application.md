@@ -40,8 +40,8 @@ Create a file called `package.json`. This file describes dependencies for your p
 ```
 All keys and values inside the package.json are obvious except the devDependencies. These dependencies are node packages that are to be installed by the Node Package Manager. All these dependencies can be placed in the following two groups:
 
-- tools for automated testing (Mocha, Chai, SinonJs)
-- task runner (Grunt) to run the automated tests and and prepare the application for deployment. 
+- tools for automated testing (Mocha, Chai, SinonJs),
+- task runner (Grunt) to run the automated tests and and prepare the application for deployment
 
 These dependencies are not used by the application directly, they just provide the infrastructure for testing and deploying the application. Look up each package here: https://www.npmjs.com/ to have an idea of what each package is good for.
 
@@ -53,7 +53,7 @@ Execute the command `npm install` from the folder where your `package.json` resi
 
 >Hint: in case you are using git, I suggest putting the `node_modules` folder in the git ignore list, otherwise you will end up committing unnecessary files to the online repository and you may end up with conflicts.
 
-Setting up the application folder with Bower and Grunt
+Setting up the application folder with Bower and RequireJs
 ---------------------------------------
 
 Create an `app` folder inside your application and a `lib` folder inside app. We will place all frameworks and libraries we will use inside `app/lib`. We will use Bower to install the frameworks and libraries we will use to develop our application. Bower is a package manager for client-side development. 
@@ -87,7 +87,6 @@ It is time to define the actual dependencies. Place a `bower.json` file in the s
         "backbone": "latest",
         "underscore": "latest",
         "requirejs": "latest",
-        "bootstrap": "latest",
         "marionette": "latest"
     }
 }
@@ -97,6 +96,14 @@ Executing bower install will install all dependencies of our application in the 
 
 - Bower requires `git` to be installed and globally accessible in your terminal or command line. 
 - In case of packages like Marionette, all dependencies are implicitly downloaded. This is why both backbone.wreqr and backbone.babysitter appear in your libs folder.
+
+An alternative option is to leave the dependencies object empty in `bower.json`. Then execute the following command in the terminal:
+
+```
+bower install jquery backbone underscore requirejs marionette --save
+```
+
+The save option will prefill the dependencies in `bower.json` with the versions downloaded by Bower. In case there is a conflict between the versions required by the dependencies, Bower lets you choose betwen them in the terminal. 
 
 > **Question**: What's the difference between NPM and Bower?
 > **Answer**: After reading this section, you may conclude that Bower works very much like NPM. Although NPM is the largest available Javascript-based module library, Bower is optimized for client side development. The main advantage of Bower is that it does not allow multiple versions of the same dependency to end up in your application code. Downloading multiple copies of the same dependency is highly inefficient on client side. Let alone injecting a breaking change in a conflicting dependency. There are solutions for using NPM for client side dependency management, but we will stick to Bower in this tutorial.
@@ -111,6 +118,8 @@ Executing bower install will install all dependencies of our application in the 
 > 
 > - one directly in `node_modules`,
 > - one in `backbone.marionette`, inside its `node_modules` folder.
+
+
 
 It is now time to organize the client side dependencies into modules and load them. Create an `index.html` file in the `app` folder and paste the following code there:
 
@@ -194,3 +203,97 @@ require([
 ```
 
 This entry point verifies that both requirejs, jQuery, Backbone and Marionette are accessible once the DOM is ready.
+
+
+Setting up the test environment
+---------------------------------
+
+Create a `test` folder in your application and a `spec` folder inside the `test` folder. Create a file in the test folder and call it `test.html`. This file will contain all the results of our automated tests. Paste the following contents in the file:
+
+```html
+<html>
+	<head>
+		<link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+		<script type="text/javascript" src="../node_modules/mocha/mocha.js"></script>
+		<script type="text/javascript" src="../node_modules/chai/chai.js"></script>
+		<script type="text/javascript" src="../node_modules/sinon/lib/sinon.js"></script>
+		<script type="text/javascript">
+			var expect = chai.expect;
+        			var should = chai.should;
+        			mocha.setup('bdd');
+
+        			window.onload = function( )
+        			{
+        			    mocha.run(); 
+        			}
+		</script>
+		<script type="text/javascript" src="spec/example.spec.js"></script>
+	</head>
+	<body>
+		<h1>Automated tests</h1>
+		<div id="mocha"></div>
+	</body>
+</html>
+```
+
+* Mocha is our test runner. We include the test runner Javascript file and the default CSS so that the test results will look nice in the test html page
+* Chai is the assertion library of our choice. We enable the expect (i.e. Expect X to be/have Y) and should (i.e. X should be/have Y) assertion styles and use the BDD (Behavior Driven Development) mocha setup
+* `sinon.js` is a helpful library allowing us to create spies, stubs and mocks. In addition, sinon lets us create a fake server, catch server requests and respond those requests with fake payload
+* `mocha.run()` should be called to run the included test spec files and verify the assertions inside, grouped by test cases and test suites
+* `example.spec.js` is the only test spec file that we currently included. We will soon provide some dummy tests to see the test page in action
+* The document body should include a node with id mocha
+
+Create the file test/example.spec.js and paste the following content there:
+
+```javascript
+describe( 'Example Test Suite', function( )
+{
+    it( 'should pass', function() 
+    {
+        expect( true ).to.be.true;
+    };
+    it( 'should be pending' );
+}
+```
+
+View `test.html` in the browser. You should see your automated tests. One of them should pass, while the other one should be pending.
+
+Configure the Grunt task runner
+-------------------------------
+
+Now that both the application and the test page are set up, it is time to think about what kind of tasks need to be executed in order to develop, maintain, test and deploy the application.
+
+Create a file called `Gruntfile.js` in the `MarionetteTest` folder. Paste the following code there:
+
+```javascript
+module.exports = function( grunt ) { 
+
+    grunt.initConfig( {
+    } );
+    
+    grunt.registerTask('default', [] );
+}
+```
+
+The task runner is not running any errors at the moment. Test the Gruntfile by running it from the terminal by running the grunt task. Reminder: we installed grunt as a Node module in the section "Installing Node Modules with NPM".
+
+```
+~/MarionetteTest$ grunt
+
+Done, without errors.
+```
+
+The list of tasks that can be added to the Gruntfile is quite big. In addition, even if you don't find a task suitable for automating a process related to development, testing or deployment, you can also execute arbitrary commands. What kind of tasks and commands are suggested?
+- In most applications, SASS or LESS is used for writing maintainable CSS. Both `.sass` and `.less` can be compiled into `.css` that the browser can understand. The task responsible for converting `.sass` files into `.css` is `"grunt-contrib-compass"`
+- When developing, operating and maintaining large Backbone/Marionette applications, typically a lot of files are created. For performance reasons, it makes sense to concatenate and minify the code and deploy the application in a way that the browser loads only one Javascript file from the server. The task `"grunt-contrib-uglify"` is responsible for this process. As a side benefit, as the name suggests, your code will also become quite ugly, therefore the outside world will have a hard time understanding details and organizing principles of your code. For smooth debugging however, deploying source maps to at least the QA server is suggested.
+- Live reload: development is made easier if your browser is automatically reloaded whenever you change a file. 
+- Execution of automated tests: Mocha tests can also be executed in the command line, using a headless browser like PhantomJs.
+- RequireJs module compilation and dependency resolution can also be performed by the Gruntfile
+- When you stick to coding standards, JsHint can be executed automatically to make sure your code meets your defined quality standards
+
+How to proceed from here
+------------------------
+
+First of all, I suggest following this tutorial step by step. Experiment with each tool until you are confident with handling it. This tutorial does not explain everything you have to know about these tools, therefore it is worth researching alternative configuration options. In addition, it is also worth trying out alternatives, such as Browserify instead of Bower, or another CommonJs compatible module loader instead of RequireJs. In addition, you can also consider using the EcmaScript 6 module system and provide polyfills for compatibility.
+
+This tutorial left many points open. For instance, the testing tools were hardly introduced, let alone the testing method (Test Driven, Acceptance Test Driven or Behavior Driven Development). In addition, even though Backbone and Marionette is accessible in the entry point of the application, we are far from being done when it comes to the actual setup of Backbone and Marionette objects. 
