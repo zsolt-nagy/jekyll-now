@@ -106,9 +106,11 @@ bower install jquery backbone underscore requirejs marionette --save
 The save option will prefill the dependencies in `bower.json` with the versions downloaded by Bower. In case there is a conflict between the versions required by the dependencies, Bower lets you choose betwen them in the terminal. 
 
 > **Question**: What's the difference between NPM and Bower?
+
 > **Answer**: After reading this section, you may conclude that Bower works very much like NPM. Although NPM is the largest available Javascript-based module library, Bower is optimized for client side development. The main advantage of Bower is that it does not allow multiple versions of the same dependency to end up in your application code. Downloading multiple copies of the same dependency is highly inefficient on client side. Let alone injecting a breaking change in a conflicting dependency. There are solutions for using NPM for client side dependency management, but we will stick to Bower in this tutorial.
 
 > **Question:** How are dependencies of dependencies loaded by Bower and NPM exactly?
+
 > **Answer:** Suppose we load the Marionette package both with Bower and with NPM. As you saw in the above example, Bower placed dependencies of Marionette directly in the `lib` folder, outside the folder of the retrieved Marionette package. NPM on the other hand places all dependencies of Marionette inside the Marionette folder. Suppose the following two lines were added to the devDependencies list of your package.json file.  
 > ```json
 >     "backbone.marionette": "latest",
