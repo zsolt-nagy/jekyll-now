@@ -7,6 +7,8 @@ The below instructions describe how a new Backbone project can be set up. Even t
 
 When dealing with the terminal, I will write commands in their pure form assuming that you have the rights to execute them. In case execution is denied from you due to lack of administrator rights, write `sudo` before the command to be executed. Important: some packages will be downloaded from online repositories. When the exact version is not specified, some paths may become incorrect with time.
 
+I will concentrate on the tools and the reasons for using them instead of giving you a step by step tutorial containing a boilerplate that matches my taste when it comes to developing applications. In the first section, NPM and node modules will be set up to equip your project with libraries supporting automated testing and some modules used by our task runner. Then the client side dependencies of the application will be set up using Bower, followed by the RequireJs, managing our client side dependencies. The third section places the entry point of the application in the code, making it possible to run an empty application. The fourth section deals with setting up automated tests. This post is concluded with setting up Grunt, a task runner capable of providing development and testing support and can also prepare the code for deployment by executing repetative tasks.
+
 Installing Node Modules with NPM
 -----------------------------
 
@@ -29,9 +31,6 @@ Create a file called `package.json`. This file describes dependencies for your p
         "grunt-contrib-requirejs": "latest",
         "grunt-contrib-uglify": "latest",
         "grunt-css": "latest",
-        "grunt-mocha": "latest",
-        "grunt-mocha-phantomjs": "latest",
-        "grunt-shell": "latest",
         "mocha": "latest",
         "sinon": "latest",
         "sinon-chai": "latest"
@@ -42,7 +41,7 @@ Create a file called `package.json`. This file describes dependencies for your p
 All keys and values inside the package.json are obvious except the devDependencies. These dependencies are node packages that are to be installed by the Node Package Manager. All these dependencies can be placed in the following two groups:
 
 - tools for automated testing (Mocha, Chai, SinonJs),
-- task runner (Grunt) to run the automated tests and and prepare the application for deployment
+- task runner (Grunt) to run the automated tests and and prepare the application for development, testing and deployment
 
 These dependencies are not used by the application directly, they just provide the infrastructure for testing and deploying the application. Look up each package here: https://www.npmjs.com/ to have an idea of what each package is good for.
 
@@ -205,6 +204,7 @@ require([
 
 This entry point verifies that both requirejs, jQuery, Backbone and Marionette are accessible once the DOM is ready.
 
+I will leave the rest of the Backbone-Marionette related questions open. 
 
 Setting up the test environment
 ---------------------------------
@@ -293,9 +293,57 @@ The list of tasks that can be added to the Gruntfile is quite big. In addition, 
 - RequireJs module compilation and dependency resolution can also be performed by the Gruntfile
 - When you stick to coding standards, JsHint can be executed automatically to make sure your code meets your defined quality standards
 
+Let's add automatic RequireJs compilation and uglification to the Gruntfile.
+
+```javascript
+module.exports = function( grunt ) { 
+
+	// Configure tasks
+    grunt.initConfig( {
+
+	    requirejs: {
+	        compile: {
+	            options: {
+	                name           : "main",
+	                baseUrl        : "app/js/",
+	                mainConfigFile : "app/js/main.js",
+	                out            : "app/js/main.min.js",
+	                deps           : [ '../lib/requirejs/require' ],
+	                optimize       : "none",
+	                preserveLicenseComments: false,
+	                generateSourceMaps : false
+	            }
+	        }
+	    },
+
+	    uglify : {
+	        dist: {
+	            src  : [ 'app/js/main.min.js' ],
+	            dest : 'app/js/main.min.js'
+	        }
+	    }    
+
+    } );
+
+    // Load tasks from the node_modules folder
+    grunt.loadNpmTasks( 'grunt-contrib-requirejs' );
+    grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+    
+    // define tasks list
+    grunt.registerTask( 'default', [ 'requirejs', 'uglify' ] );
+    grunt.registerTask( 'require', [ 'require' ] );
+}
+```
+
+Setting up Grunt consists of three parts: configuration options are set up, then the used modules are loaded from the `node_modules` folder, then the tasks are defined. A registered task can contain any number of loaded and configured tasks or commands. 
+- When executing `grunt`, the file `main.min.js` is created containing compiled and uglified code,
+- When executing `grunt require`, only the requireJs task is executed.
+
 How to proceed from here
 ------------------------
 
-First of all, I suggest following this tutorial step by step. Experiment with each tool until you are confident with handling it. This tutorial does not explain everything you have to know about these tools, therefore it is worth researching alternative configuration options. In addition, it is also worth trying out alternatives, such as Browserify instead of Bower, or another CommonJs compatible module loader instead of RequireJs. In addition, you can also consider using the EcmaScript 6 module system and provide polyfills for compatibility.
+First of all, I suggest following this tutorial step by step in order to familiarize yourself with the tools that make your life easier. The alternative is to hunt for scripts, include them one by one, and manually prepare your product for deployment. What about testing? Well, the alternative of automated testing is a documentation of manual test scenarios. Once a development leader at the military of a small country was asked to cut the budget of testing by half. Then he asked which half of the 1000 pages of manual test cases he should stop executing, the first half or the second half? 
 
-This tutorial left many points open. For instance, the testing tools were hardly introduced, let alone the testing method (Test Driven, Acceptance Test Driven or Behavior Driven Development). In addition, even though Backbone and Marionette is accessible in the entry point of the application, we are far from being done when it comes to the actual setup of Backbone and Marionette objects. 
+Experiment with each tool until you are confident with handling it. This tutorial does not explain everything you have to know about these tools, therefore it is worth researching alternative configuration options. In addition, it is also worth trying out alternatives, such as Browserify instead of Bower, or another CommonJs compatible module loader instead of RequireJs. The EcmaScript 6 module system can also be used to provide polyfills for compatibility. 
+
+This tutorial left many points open. For instance, the testing tools were hardly introduced, let alone the testing method (Test Driven, Acceptance Test Driven or Behavior Driven Development). Furthermore, even though Backbone and Marionette is accessible in the entry point of the application, we are far from being done when it comes to the actual setup of Backbone and Marionette objects. I will leave these tasks up to you for experimenting.
