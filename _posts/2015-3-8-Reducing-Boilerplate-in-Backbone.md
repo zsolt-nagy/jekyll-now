@@ -26,10 +26,10 @@ Even though the Backbone documentation allows extending the prototype of Backbon
 Suppose that you are developing a platform game and you use models for storing data on your characters. Each character has the same properties: 
 
 - x and y location coordinates,
-- vx and vx velocities,
+- vx and vy velocities,
 - collision detection with a surface.
 
-Unless our goal is to write a boring game, each character should move according to its own strategy. When animating a character, we have to update their position and speed in a method. This method cannot be implemented in the character class because it depends on the strategy of the actual characters. 
+Unless our goal is to write a boring game, each character should move according to its own strategy. When animating a character, we have to update its position and speed in a method. This method cannot be implemented in the character class because it depends on the strategy of the actual characters. 
 
 ```javascript
 var CharacterAbstractModel = Backbone.Model.extend( {
