@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Reducing Boilerplate in Backbone with Abstraction
+title: Reducing Boilerplate in Backbone
 ---
 
 Backbone is one of the least opiniated libraries that help you organize your code. Backbone just gives you models, collections, routers, views, a history object and events. The rest is up to you. This means that if you enjoy typing and copy-pasting, you will end up with a lot of boilerplate code. If you stick to DRY (don't repeat yourself) principles, this post is here to remind you that Backbone is not as verbose as you would think it is.
