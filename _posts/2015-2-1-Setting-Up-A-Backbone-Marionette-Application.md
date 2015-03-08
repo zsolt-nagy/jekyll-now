@@ -144,12 +144,15 @@ It is now time to organize the client side dependencies into modules and load th
 ```javascript
 requirejs.config({
   paths: {
-    'jquery': '../lib/jquery/dist/jquery',
+    'jquery'    : '../lib/jquery/dist/jquery',
     'underscore': '../lib/underscore/underscore',
-    'backbone': '../lib/backbone/backbone',
-    'backbone.babysitter': '../lib/backbone.babysitter/lib/backbone.babysitter',
-    'backbone.wreqr': '../lib/backbone.wreqr/lib/backbone.wreqr',
-    'backbone.marionette': '../lib/marionette/lib/core/backbone.marionette'
+    'backbone'  : '../lib/backbone/backbone',
+    'backbone.babysitter': 
+        '../lib/backbone.babysitter/lib/backbone.babysitter',
+    'backbone.wreqr': 
+        '../lib/backbone.wreqr/lib/backbone.wreqr',
+    'backbone.marionette': 
+        '../lib/marionette/lib/core/backbone.marionette'
   },
   shim: {
     underscore: {
@@ -161,7 +164,11 @@ requirejs.config({
     },
     'backbone.marionette': {
       exports: 'Backbone.Marionette',
-      deps: [ 'backbone', 'backbone.babysitter', 'backbone.wreqr' ]
+      deps: [ 
+          'backbone', 
+          'backbone.babysitter', 
+          'backbone.wreqr' 
+      ]
     }
   },
   deps: [ 'jquery', 'underscore' ]
@@ -215,12 +222,15 @@ Create a `test` folder in your application and a `spec` folder inside the `test`
 
 ```html
 <html>
-	<head>
-		<link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
-		<script type="text/javascript" src="../node_modules/mocha/mocha.js"></script>
-		<script type="text/javascript" src="../node_modules/chai/chai.js"></script>
-		<script type="text/javascript" src="../node_modules/sinon/lib/sinon.js"></script>
-		<script type="text/javascript">
+    <head>
+        <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+        <script type="text/javascript" 
+                src="../node_modules/mocha/mocha.js"></script>
+        <script type="text/javascript" 
+                src="../node_modules/chai/chai.js"></script>
+        <script type="text/javascript" 
+                src="../node_modules/sinon/lib/sinon.js"></script>
+        <script type="text/javascript">
 			var expect = chai.expect;
         			var should = chai.should;
         			mocha.setup('bdd');
@@ -229,8 +239,9 @@ Create a `test` folder in your application and a `spec` folder inside the `test`
         			{
         			    mocha.run(); 
         			}
-		</script>
-		<script type="text/javascript" src="spec/example.spec.js"></script>
+        </script>
+        <script type="text/javascript" 
+                src="spec/example.spec.js"></script>
 	</head>
 	<body>
 		<h1>Automated tests</h1>
@@ -300,30 +311,30 @@ Let's add automatic RequireJs compilation and uglification to the Gruntfile.
 ```javascript
 module.exports = function( grunt ) { 
 
-	// Configure tasks
+    // Configure tasks
     grunt.initConfig( {
 
-	    requirejs: {
-	        compile: {
-	            options: {
-	                name           : "main",
-	                baseUrl        : "app/js/",
-	                mainConfigFile : "app/js/main.js",
-	                out            : "app/js/main.min.js",
-	                deps           : [ '../lib/requirejs/require' ],
-	                optimize       : "none",
-	                preserveLicenseComments: false,
-	                generateSourceMaps : false
-	            }
+	requirejs: {
+	    compile: {
+	        options: {
+                    name           : "main",
+	            baseUrl        : "app/js/",
+	            mainConfigFile : "app/js/main.js",
+	            out            : "app/js/main.min.js",
+	            deps           : [ '../lib/requirejs/require' ],
+	            optimize       : "none",
+	            preserveLicenseComments: false,
+	            generateSourceMaps : false
 	        }
-	    },
+	    }
+        },
 
-	    uglify : {
-	        dist: {
-	            src  : [ 'app/js/main.min.js' ],
-	            dest : 'app/js/main.min.js'
-	        }
-	    }    
+	uglify : {
+            dist: {
+	        src  : [ 'app/js/main.min.js' ],
+	        dest : 'app/js/main.min.js'
+            }
+	}    
 
     } );
 
@@ -332,8 +343,11 @@ module.exports = function( grunt ) {
     grunt.loadNpmTasks( 'grunt-contrib-uglify' );
     
     // define tasks list
-    grunt.registerTask( 'default', [ 'requirejs', 'uglify' ] );
-    grunt.registerTask( 'require', [ 'require' ] );
+    grunt.registerTask( 
+    	'default', 
+    	[ 'requirejs', 'uglify' ] );
+    grunt.registerTask( 
+    	'require', [ 'require' ] );
 }
 ```
 
