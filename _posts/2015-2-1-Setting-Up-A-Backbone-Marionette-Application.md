@@ -215,6 +215,7 @@ This entry point verifies that both requirejs, jQuery, Backbone and Marionette a
 
 I will leave the rest of the Backbone-Marionette related questions open. 
 
+<a name="mocha-tests></a>
 Setting up the test environment
 ---------------------------------
 
