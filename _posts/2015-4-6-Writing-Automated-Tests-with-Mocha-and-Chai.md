@@ -32,7 +32,7 @@ All three styles are easily readable. Although it is a matter of taste, in my op
 
 Readability is not everything. Notice that the only way to write assertions with `should`, is that the assertion library extends the Object prototype. This could lead to errors in rare extreme cases like trying to call the non-existing `should` method of `undefined`. More importantly, an assertion style not extending the Object prototype is simply cleaner. This is a strong reason in favor of the Expect style. As Expect is very close to the standard Jasmine syntax, choosing Expect makes your assertions familiar to Jasmine users. For all these reasons, I will stick to the Expect style in the rest of this article.
 
-I did not consider that the assertion styles are grouped by the <a href="http://chaijs.com/guide/styles/" target="_blank">ChaiJs style guide</a> under the umbrella of BDD and TDD. This information is slightly misleading as any assertion syntax can be used for any testing processes. Recall my post on <a href="http://zsolt-nagy.github.io/Solid-Test-Driven-Development/">Test Driven Development</a> describing why your software development methodology should include some strategy that lets you write tests independently from the bias of implementation. The choice of assertion library has little to do in establishing these processes. 
+I did not consider that the assertion styles are grouped by the <a href="http://chaijs.com/guide/styles/" target="_blank">ChaiJs style guide</a> under the umbrella of BDD and TDD. This information is slightly misleading as any assertion syntax can be used for any testing processes. Recall my post on <a href="http://zsolt-nagy.github.io/Solid-Test-Driven-Development/" target="_blank">Test Driven Development</a> describing why your software development methodology should include some strategy that lets you write tests independently from the bias of implementation. The choice of assertion library has little to do in establishing these processes. 
 
 ### Building Blocks
 
@@ -82,7 +82,7 @@ The top level building block is called `describe`, responsible for describing a 
 
 The tests contain a text description also appearing in the report. This description should describe the functionality under test in a compact sentence. The second argument of an `it` test case is a function containing one or more assertions that have to be verified by the code.
 
-Notice the three pending tests. Tests cases without implementation or `xit` test cases are automatically pending. Don't forget the advice of <a href="http://zsolt-nagy.github.io/Solid-Test-Driven-Development/">this article</a> about failing tests: never ever accept them. If you are aware of a failing test that you cannot repair immediately, make it pending until you have the resources to make it pass.
+Notice the three pending tests. Tests cases without implementation or `xit` test cases are automatically pending. Don't forget the advice of <a href="http://zsolt-nagy.github.io/Solid-Test-Driven-Development/" target="_blank">this article</a> about failing tests: never ever accept them. If you are aware of a failing test that you cannot repair immediately, make it pending until you have the resources to make it pass.
 
 ### Unit Testing advice
 
@@ -121,7 +121,7 @@ Note that at an expense of readability, it would be possible to write just one a
 
 ### Assertions
 
-If you have not written automated tests before, in order to take full advantage of this post, I suggest <a href="http://zsolt-nagy.github.io/Setting-Up-A-Backbone-Marionette-Application/#mocha-tests">setting up Mocha and Chai</a> yourself so that you would have a starting point for writing an application guided by tests. 
+If you have not written automated tests before, in order to take full advantage of this post, I suggest <a href="http://zsolt-nagy.github.io/Setting-Up-A-Backbone-Marionette-Application/#mocha-tests" target="_blank">setting up Mocha and Chai</a> yourself so that you would have a starting point for writing an application guided by tests. 
 
 The following lookup table will show how basic assertions can be written in Expect style. Feel free to copy-paste the assertions and run them in tests. Alternatively, download the examples of this section from <a href="https://github.com/zsolt-nagy/mocha-chai-sinon-cheatsheet" target="_blank">this repository</a>.
 
@@ -398,7 +398,7 @@ it( 'should throw an error', function() {
 
 All the above examples are available in <a href="https://github.com/zsolt-nagy/mocha-chai-sinon-cheatsheet/blob/master/spec/cheatsheet.spec.js" target="_blank">this test suite</a>. The executed test suite can be viewed in a browser, where each test case can be expanded and collapsed in order to view the assertions inside the test cases.
 
-<img src="images/cheatsheet.png" alt="Mocha-Chai Cheat Sheet" />
+<img src="http://zsolt-nagy.github.io/images/posts/cheatsheet.png" alt="Mocha-Chai Cheat Sheet" />
 
 Steps for preparing the test file:
 
