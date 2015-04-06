@@ -144,12 +144,15 @@ It is now time to organize the client side dependencies into modules and load th
 ```javascript
 requirejs.config({
   paths: {
-    'jquery'    : '../lib/jquery/dist/jquery',
-    'underscore': '../lib/underscore/underscore',
-    'backbone'  : '../lib/backbone/backbone',
+    'jquery'             : 
+        '../lib/jquery/dist/jquery',
+    'underscore'         : 
+        '../lib/underscore/underscore',
+    'backbone'           : 
+        '../lib/backbone/backbone',
     'backbone.babysitter': 
         '../lib/backbone.babysitter/lib/backbone.babysitter',
-    'backbone.wreqr': 
+    'backbone.wreqr'     : 
         '../lib/backbone.wreqr/lib/backbone.wreqr',
     'backbone.marionette': 
         '../lib/marionette/lib/core/backbone.marionette'
@@ -200,8 +203,7 @@ require([
     Marionette
 ) {
 
-	$( document ).ready( function( )
-	{
+	$( document ).ready( function() {
 		console.log( 'Document is ready.' );
 		console.log( 'jQuery: ', $ );
 		console.log( 'Backbone: ', Backbone );
@@ -237,8 +239,7 @@ Create a `test` folder in your application and a `spec` folder inside the `test`
         			var should = chai.should;
         			mocha.setup('bdd');
 
-        			window.onload = function( )
-        			{
+        			window.onload = function() {
         			    mocha.run(); 
         			}
         </script>
@@ -264,8 +265,7 @@ Create the file test/example.spec.js and paste the following content there:
 ```javascript
 describe( 'Example Test Suite', function( )
 {
-    it( 'should pass', function() 
-    {
+    it( 'should pass', function() {
         expect( true ).to.be.true;
     };
     it( 'should be pending' );
@@ -287,7 +287,7 @@ module.exports = function( grunt ) {
     grunt.initConfig( {
     } );
     
-    grunt.registerTask('default', [] );
+    grunt.registerTask( 'default', [] );
 }
 ```
 
@@ -319,22 +319,22 @@ module.exports = function( grunt ) {
 	requirejs: {
 	    compile: {
 	        options: {
-                    name           : "main",
-	            baseUrl        : "app/js/",
-	            mainConfigFile : "app/js/main.js",
-	            out            : "app/js/main.min.js",
-	            deps           : [ '../lib/requirejs/require' ],
-	            optimize       : "none",
-	            preserveLicenseComments: false,
-	            generateSourceMaps : false
+                name                    : "main",
+	            baseUrl                 : "app/js/",
+	            mainConfigFile          : "app/js/main.js",
+	            out                     : "app/js/main.min.js",
+	            deps                    : [ '../lib/requirejs/require' ],
+	            optimize                : "none",
+	            preserveLicenseComments : false,
+	            generateSourceMaps      : false
 	        }
 	    }
         },
 
 	uglify : {
             dist: {
-	        src  : [ 'app/js/main.min.js' ],
-	        dest : 'app/js/main.min.js'
+    	        src  : [ 'app/js/main.min.js' ],
+    	        dest : 'app/js/main.min.js'
             }
 	}    
 

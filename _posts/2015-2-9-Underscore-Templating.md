@@ -30,38 +30,38 @@ Suppose an array of departure objects is given under the reference `departures`.
 ```javascript
 var departures = [
 	{
-		id: 'KL 1255',
-		destination: 'Amsterdam',
-		departureTime: '21:55',
-		gate: 'A13',
+		id                    : 'KL 1255',
+		destination           : 'Amsterdam',
+		departureTime         : '21:55',
+		gate                  : 'A13',
 	},
 	{
-		id: 'OK 001',
-		destination: 'Prague',
-		departureTime: '20:40',
-		gate: 'A13',
-		status: 'Check-in'
+		id                    : 'OK 001',
+		destination           : 'Prague',
+		departureTime         : '20:40',
+		gate                  : 'A13',
+		status                : 'Check-in'
 	},
 	{
-		id: '4U 2011',
-		destination: 'Stuttgart', 
-		departureTime: '20:35',
-		gate: 'A11',
-		status: 'Check-in'
+		id                    : '4U 2011',
+		destination           : 'Stuttgart', 
+		departureTime         : '20:35',
+		gate                  : 'A11',
+		status                : 'Check-in'
 	},
 	{
-	    id: 'LX 911',
-	    destination: 'Zurich',
-	    departureTime: '20:15',
-	    expectedDepartureTime: '21:15',
-	    status: 'check-in'
+	    id                    : 'LX 911',
+	    destination           : 'Zurich',
+	    departureTime         : '20:15',
+	    expectedDepartureTime : '21:15',
+	    status                : 'check-in'
 	},
 	{
-		id: 'OS 133',
-		destination: 'Vienna',
-		departureTime: '19:25',
-		gate: 'A06',
-		status: 'Departed'	
+		id                    : 'OS 133',
+		destination           : 'Vienna',
+		departureTime         : '19:25',
+		gate                  : 'A06',
+		status                : 'Departed'	
 	}
 ];
 ```
@@ -116,12 +116,12 @@ var tableTemplate = _.template( templateString );
 var data = {
     departures: departures,
     headers: {
-	    id: 'Id',
-	    destination: 'Destination',
-	    departureTime: 'DepartureTime',
-	    expectedDepartureTime: 'Expected Departure Time',
-	    gate: 'Gate',
-	    status: 'Status'
+	    id                    : 'Id',
+	    destination           : 'Destination',
+	    departureTime         : 'DepartureTime',
+	    expectedDepartureTime : 'Expected Departure Time',
+	    gate                  : 'Gate',
+	    status                : 'Status'
     }
 };
 
@@ -164,8 +164,8 @@ Finally, the keys should be translated to (key, value) pairs and the result shou
 ```javascript
 var keyToSchemaItem = function( key ) { 
     return { 
-        key: key, 
-        value: stringValue( key ) 
+        key   : key, 
+        value : stringValue( key ) 
     };
 };
 var tableSchema = _.map( keys, keyToSchemaItem );
@@ -176,8 +176,8 @@ Let's prepare all data for presentation and change the template. The table colum
 ```javascript
 // Prepare the data for presentation
 var data = {
-    departures: departures,
-    schema: tableSchema
+    departures : departures,
+    schema     : tableSchema
 };
 ``` 
 
@@ -236,8 +236,8 @@ After clarifying how the `addEmptyValues` function works, the mapping becomes st
 ```javascript
 // Prepare the data for presentation
 var data = {
-    departures: presentedDepartures,
-    schema: tableSchema
+    departures : presentedDepartures,
+    schema     : tableSchema
 };
 ```
 
