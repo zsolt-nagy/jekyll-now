@@ -179,7 +179,7 @@ it( 'should check truthy and falsy values', function() {
 } );
 ```
 
-Equality is a fundamental assertion. In fact, most assertions can be expressed using equality and native Javascript, without significantly reducing readability. Equality also considers types, therefore it does not pass for all values where `==` would return true. For instance, `3 == '3'` is true, but `3` does not `equal` `'3'`. Two reference types are equal whenever they point at the exact same object, array or function. Their contents do not matter.
+Equality is a fundamental assertion. In fact, most assertions can be expressed using equality and native Javascript, without significantly reducing readability. Equality works like the `===` operator meaning that both values and types should equal. Two reference types are equal whenever they point at the exact same object, array or function. Their contents do not matter.
 
 ```javascript
 it( 'should check equality', function() {
@@ -196,7 +196,9 @@ it( 'should check equality', function() {
 } );
 ```
 
-When comparing reference values, we often use equality in a sense that all primitive values inside the compared objects in any depth should be equal to each other respectively. This is called a deep equality check.
+When comparing reference values, we often use equality in a sense that all primitive values inside the compared objects in any depth should be equal to each other respectively. This is called a deep equality check, denoted by `deep.equal` or `eql`. 
+
+I generally like solutions that explain themselves even if the reader is not familiar with the used library. As the difference between `eql` and `equal` requires additional knowledge about Chai, I prefer using the longer, but self-explanatory `deep.equal` form.
 
 ```javascript
 it( 'should check deep equality of objects and arrays', function() {
