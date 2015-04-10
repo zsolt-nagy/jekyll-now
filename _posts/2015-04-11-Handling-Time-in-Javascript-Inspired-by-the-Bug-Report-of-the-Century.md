@@ -7,11 +7,11 @@ First of all, check out this <a href="https://github.com/angular/angular.js/issu
 
 ### What went wrong in Australia in 1970?
 
-A different timezone offset was applied right before and right after new year's eve. Proof:
+A different timezone offset was applied 1 millisecond before and 1 milliseconds after the new year's eve of 1970. Proof:
 
 <img src="http://zsolt-nagy.github.io/images/posts/dates_in_australia.png" alt="Timezone offsets around New Years eve in 1970 in Australia" />
 
-After invoking the timestamp constructor of Date objects and console logging the timezone offset in minutes, a daylight saving inflection point got created. It is a bug we have to live with. Not a crucial one as I have never seen an application that would require you to use a date object before 1970.
+After invoking the timestamp constructor of Date objects and console logging the timezone offset in minutes, we can clearly see a daylight saving inflection point. It is a bug we have to live with. Not a crucial one as I have never seen an application that would require you to use a date object before 1970. While this bug is funny, using the Date object often comes with unnecessary complications.
 
 ### Date Object: The Bad Parts
 
