@@ -81,9 +81,7 @@ The problem is that the above code will work for half a year each year. This cod
 
 ### Client-Server communication
 
-> A Unix timestamp represents the exact same time instant all over the world.
-
-If you freeze the time and enter `new Date().getTime()` in your console, you will see the exact same timestamp anywhere in the world. The client will be able to interpret and display that timestamp both in the local and GMT timezones.
+A Unix timestamp represents the exact same time instant all over the world. If you freeze the time and enter `new Date().getTime()` in your console, you will see the exact same timestamp anywhere in the world. The client will be able to interpret and display that timestamp both in local and GMT timezones. 
 
 If you need to display timezones, one option is to use the <a href="http://www.w3.org/TR/NOTE-datetime" target="_blank">ISO 8601</a> standard. This is the serialized form of Javascript Date objects as well:
 
