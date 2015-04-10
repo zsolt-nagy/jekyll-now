@@ -40,12 +40,12 @@ Sat Jan 01 2000 01:00:00 GMT+0100 (W. Europe Standard Time)
 
 new Date(2000,0,0); 
 Fri Dec 31 1999 00:00:00 GMT+0100 (W. Europe Standard Time)
-// 2000.01.(-01) = 1999-12-31, midnight local
-// Equals 1999-12-30 23:00:00 GMT
+// 2000.01.(-01) = 1999.12.31, midnight local
+// Equals 1999.12.30 23:00:00 GMT
 
 new Date(2000,12,31)
 Wed Jan 31 2001 00:00:00 GMT+0100 (W. Europe Standard Time)
-// 2000-13-31 = 2001-01-31 midnight local
+// 2000.13.31 = 2001.01.31 midnight local
 ```
  
 Straightforward, right? Some rules:
