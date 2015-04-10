@@ -3,7 +3,7 @@ layout: post
 title: Handling Time in Javascript - Inspired by the Bug Report of the Century
 ---
 
-If you have not heard of the highlight of the week, check out this <a href="https://github.com/angular/angular.js/issues/5017" target="_blank">bug report</a>. This is not the first bug report on the Date object I have ever seen, but it motivated me to share a couple of related observations and experiences with you. More importantly, I will also describe some solutions that let you get away with using dates in any Javascript.
+First of all, check out this <a href="https://github.com/angular/angular.js/issues/5017" target="_blank">bug report</a>. This is not the first bug report on the Date object I have ever seen, but it motivated me to share a couple of related observations and experiences with you. More importantly, I will also describe some solutions that let you get away with using dates in any Javascript.
 
 ### What went wrong in Australia in 1970?
 
@@ -57,9 +57,7 @@ Straightforward, right? Some rules:
 If you are not familiar with the details, it does not matter. Just stick to proper type conversions and know one way to initialize the date object. 
 
 <a name="timezone"></a>
-The real ugly part of the Javascript date object is the following:
-
-> The date object forces the timezone of your system on you.
+**Implied timezone**: The date object forces the timezone of your system on you.
 
 If you think you can get around it by calling methods with `UTC` in them, think again. You will be able to get and set <a href="http://en.wikipedia.org/wiki/Coordinated_Universal_Time" target="_blank">UTC</a> values without problems. Can your use third party widgets such as charting libraries or date/timepickers? Unlikely. This is what makes the Date object hard to use in some cases.
 
