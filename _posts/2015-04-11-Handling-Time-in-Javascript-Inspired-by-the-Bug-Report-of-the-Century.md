@@ -3,7 +3,7 @@ layout: post
 title: Handling Time in Javascript - Inspired by the Bug Report of the Century
 ---
 
-If you have not heard of the highlight of the week, check out this <a href="https://github.com/angular/angular.js/issues/5017"> target="_blank">bug report</a>. This is not the first bug report on the Date object I have ever seen, but it motivated me to share a couple of related observations and experiences with you. More importantly, I will also describe some solutions that let you get away with using dates in any Javascript.
+If you have not heard of the highlight of the week, check out this <a href="https://github.com/angular/angular.js/issues/5017" target="_blank">bug report</a>. This is not the first bug report on the Date object I have ever seen, but it motivated me to share a couple of related observations and experiences with you. More importantly, I will also describe some solutions that let you get away with using dates in any Javascript.
 
 ### What went wrong in Australia in 1970?
 
