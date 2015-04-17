@@ -1,6 +1,6 @@
 ---
 layout: post
-Asynchronous Tests and Fixtures with Mocha and ChaiJs
+title: Asynchronous Tests and Fixtures with Mocha and ChaiJs
 ---
 
 This is the second part on automated testing with Mocha, ChaiJs and SinonJs. If you have never used Mocha or ChaiJs before, I suggest reading <a href="http://zsolt-nagy.github.io/Writing-Automated-Tests-with-Mocha-and-Chai/">the first part</a>. We will continue where we left off last time. The syntax of Mocha and Chai should mostly be clear. There are some frequently occurring scenarios though that require additional knowledge. These are:
