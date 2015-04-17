@@ -414,7 +414,7 @@ If you would like to extend the cheat sheet, feel free to submit a pull request.
 
 Due to the length of this article, I did not deal with important topics in Mocha and Chai. In the second part, I will describe how to deal with asynchronous tests and I will also introduce fixtures. As a side effect, an example will exercise the `before`, `beforeEach` and `after` functions of test suites.
 
-The third and fourth part will deal with SinonJs. First we learn how to spy, stub and mock objects, followed by a demonstration of how to use a fake timer and a fake server.
+From the part onwards, we will deal with SinonJs. First we learn how to spy, stub and mock objects, followed by a demonstration of how to use a fake timer and a fake server.
 
 
 
