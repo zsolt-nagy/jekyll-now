@@ -98,7 +98,7 @@ In some cases, we may reach the last line of a test before an asynchronous callb
 
 Let's fetch some data from a server! Suppose that you would like to fetch a Backbone Model for the purpose of checking its attributes. Note that we are not writing a unit test here as we ask a real server to send us some data. Mocha and Chai may have use cases beyond unit testing. 
 
-We will use the service http://time.jsontest.com/ and our test will check the existence of the following keys: `time`, `milliseconds_since_epoch` and `date`. Our first attempt will look like this:
+We will use the service <a href="http://time.jsontest.com/" target="_blank">http://time.jsontest.com/</a> and our test will check the existence of the following keys: `time`, `milliseconds_since_epoch` and `date`. Our first attempt will look like this:
 
 ```javascript
 // Tested code
